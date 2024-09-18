@@ -35,7 +35,7 @@ psql
 
 However I encountered the following issue: [1]
 
-![Screenshot 2024-08-25 at 14.07.44.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/87a467a1-ceb3-443e-afa2-a48d94047e83/Screenshot_2024-08-25_at_14.07.44.png)
+![Screenshot 2024-08-25 at 14.07.44.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/1.png?raw=true)
 
 Now I have to do troubleshooting
 
@@ -66,7 +66,7 @@ sudo systemctl status postgresql@VERSION-main
 
 However, I only saw the `postgresql.service` and not the instance-specific services like `postgresql@VERSION-main.service`: [2]
 
-![Screenshot 2024-08-25 at 14.35.31.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/cfdb1dee-d852-4285-a39a-574cf7ae1712/Screenshot_2024-08-25_at_14.35.31.png)
+![Screenshot 2024-08-25 at 14.35.31.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/2.png?raw=true)
 
 So I conducted further research to troubleshoot this problem.
 
@@ -77,23 +77,23 @@ dpkg -l | grep postgresql
 ps aux | grep postgres
 ```
 
-![Screenshot 2024-08-25 at 14.41.05.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/5d805f9d-04f5-41b8-a815-322d4d9876e2/Screenshot_2024-08-25_at_14.41.05.png)
+![Screenshot 2024-08-25 at 14.41.05.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/3.png?raw=true)
 
 Based on the output, it seemed that PostgreSQL 14 was installed, but the PostgreSQL server process was not running, and no PostgreSQL processes were listed. Therefore, the next step I needed to take was checking for an existing PostgreSQL cluster using the command: [4]
 
-![Screenshot 2024-08-25 at 14.43.45.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/ddea01c5-289b-4d00-9085-744e27b310eb/Screenshot_2024-08-25_at_14.43.45.png)
+![Screenshot 2024-08-25 at 14.43.45.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/4.png?raw=true)
 
 It appeared that `pg_lsclusters` was not showing any output, which indicated that there were no PostgreSQL clusters currently configured or running on my system. So the next step I needed to initialize a New PostgreSQL Cluster: [5]
 
-![Screenshot 2024-08-25 at 14.45.57.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/731f11d8-8fd9-4e1e-8ae9-67644d93b7b9/Screenshot_2024-08-25_at_14.45.57.png)
+![Screenshot 2024-08-25 at 14.45.57.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/5.png?raw=true)
 
 Next, I checked the status of the PostgreSQL cluster. [6]
 
-![Screenshot 2024-08-25 at 14.48.34.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/8f31f184-7a59-4598-80c7-7b2174a1afec/Screenshot_2024-08-25_at_14.48.34.png)
+![Screenshot 2024-08-25 at 14.48.34.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/6.png?raw=true)
 
 It was running, which made me very happy. Now, I tried to log in as the `postgres` user again and access the PostgreSQL command line interface. [7]
 
-![Screenshot 2024-08-25 at 14.49.59.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/fca46b8f-7c1c-44cc-8c9c-cde1a2b0a7af/Screenshot_2024-08-25_at_14.49.59.png)
+![Screenshot 2024-08-25 at 14.49.59.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/7.png?raw=true)
 
 ### Step 3: Experiment PostgreSQL
 
@@ -101,7 +101,7 @@ It worked successfully; I was in.
 
 Then I started experimenting with a few basic commands to become familiar with PostgreSQL, such as \l and \c. [8]
 
-![Screenshot 2024-08-25 at 15.01.22.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/7410a770-4be1-4942-b1a2-702ae2d4df0f/Screenshot_2024-08-25_at_15.01.22.png)
+![Screenshot 2024-08-25 at 15.01.22.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/8.png?raw=true)
 
 Once I was logged in, I started by creating a database for myself called "mycat" with the following command: [9]
 
@@ -109,7 +109,7 @@ Once I was logged in, I started by creating a database for myself called "mycat"
 create database mycat;
 ```
 
-![Screenshot 2024-08-25 at 15.03.45.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/f7251d4d-461e-4b79-afdc-2d907d9a6dd0/Screenshot_2024-08-25_at_15.03.45.png)
+![Screenshot 2024-08-25 at 15.03.45.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/9.png?raw=true)
 
 Then I connected to the database and started practicing by creating a table to store information about different cats—things like their name, breed, and coloration. It was a basic table, but it helped me become familiar with how to structure data in PostgreSQL, and it’s also where I  using data type and SQL constraints to ensure the data's integrity.
 
@@ -126,7 +126,7 @@ create table feline (
 	fav_toy TEXT NOT NULL );
 ```
 
-![Screenshot 2024-08-25 at 15.21.32.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/9d71b7ff-523b-4bc9-b90a-d1ddba9f3322/b282b42e-0f8c-4561-9aef-7c0b5694c72a.png)
+![Screenshot 2024-08-25 at 15.21.32.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/10.png?raw=true)
 
 ### What is data type ?
 
@@ -167,7 +167,7 @@ insert into feline (name, breed, coloration, age, sex, fav_toy) values
 
 This is the feline table after inserting values: [11]
 
-![Screenshot 2024-08-25 at 15.25.33.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/95f21519-b978-4265-badf-03aa101aedc1/Screenshot_2024-08-25_at_15.25.33.png)
+![Screenshot 2024-08-25 at 15.25.33.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/11.png?raw=true)
 
 ### Creating the `medicalrecord` Table
 
@@ -217,7 +217,7 @@ alter table feline rename column id to feline_id;
 
 I then recreated the `medicalrecord` table successfully: [12]
 
-![Screenshot 2024-08-25 at 15.50.07.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/657551be-0855-49d2-9cdb-9abfdbb748b7/Screenshot_2024-08-25_at_15.50.07.png)
+![Screenshot 2024-08-25 at 15.50.07.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/12.png?raw=true)
 
 ### Inserting Data from a CSV File
 
@@ -225,7 +225,7 @@ Then I inserted data into the table. However, while I originally used the comman
 
 To do this, I needed to create a `data.csv` file. [13]
 
-![Screenshot 2024-08-25 at 16.30.57.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/3b0695cf-1fef-497c-8a57-0ede05cc3f83/Screenshot_2024-08-25_at_16.30.57.png)
+![Screenshot 2024-08-25 at 16.30.57.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/13.png?raw=true)
 
 then I can load this CSV file into your table using the `COPY` command in psql:
 
@@ -242,7 +242,7 @@ CSV HEADER;
 
 However, I encountered errors because of file permissions [14]
 
-![Screenshot 2024-08-25 at 16.36.45.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/e6d776ce-f344-4af9-8b44-3605cbcd4868/Screenshot_2024-08-25_at_16.36.45.png)
+![Screenshot 2024-08-25 at 16.36.45.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/14.png?raw=true)
 
 It mean use the `\COPY` command in `psql` instead of `COPY` For client-side file access
 
@@ -252,7 +252,7 @@ The issue was related to directory and file permissions. Here’s how I resolved
 
 1. Check File Permissions of /home/thanh/data.csv.  [15]
 
-![Screenshot 2024-08-25 at 16.41.17.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/c2243c28-b940-4217-a49a-932a392314e1/Screenshot_2024-08-25_at_16.41.17.png)
+![Screenshot 2024-08-25 at 16.41.17.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/15.png?raw=true)
 
 As you can see: 
 
@@ -272,11 +272,11 @@ chmod 755 /home/thanh
 
 New directory permissons: [16]
 
-![Screenshot 2024-08-25 at 16.48.14.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/dd85a936-8fd8-4592-a701-e982ae7738fe/Screenshot_2024-08-25_at_16.48.14.png)
+![Screenshot 2024-08-25 at 16.48.14.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/16.png?raw=true)
 
 At the same time, file ownership of the data.csv file also had problem: [17]
 
-![Screenshot 2024-08-25 at 16.42.43.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/fd85fcee-c3f9-4ba9-a4ad-d9baca48dea0/Screenshot_2024-08-25_at_16.42.43.png)
+![Screenshot 2024-08-25 at 16.42.43.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/17.png?raw=true)
 
 As you can see, the output `-rw-r--r-- 1 root root 394 Aug 25 13:05 data.csv` indicates that:
 
@@ -292,11 +292,11 @@ sudo chown thanh:thanh /home/thanh/data.csv
 
 New file ownership: [18]
 
-![Screenshot 2024-08-25 at 16.52.54.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/f192923e-c559-4c74-9ce5-6e064504c71b/Screenshot_2024-08-25_at_16.52.54.png)
+![Screenshot 2024-08-25 at 16.52.54.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/18.png?raw=true)
 
 After fixing these issues, the `\COPY` command worked successfully, and the data was inserted into the `medicalrecord`table. [19]
 
-![Screenshot 2024-08-25 at 16.54.53.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/082a4348-41da-4acd-a649-87746ab74535/Screenshot_2024-08-25_at_16.54.53.png)
+![Screenshot 2024-08-25 at 16.54.53.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/19.png?raw=true)
 
 ## Configuring PostgreSQL: Making It Work for Me
 
@@ -379,7 +379,7 @@ sudo pg_dumpall -U postgres -h localhost -p 5432 -f backup_file.sql
 
 However, I encountered a password authentication issue when run this command: [20]
 
-![Screenshot 2024-08-26 at 11.41.08.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/ef1f44d2-8663-4759-8a68-876bc65f9e78/Screenshot_2024-08-26_at_11.41.08.png)
+![Screenshot 2024-08-26 at 11.41.08.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/20.png?raw=true)
 
 But I found out how to solve that by changing the PostgreSQL user password since passwords in PostgreSQL are stored in a hashed format, making it impossible to extract the original password.
 
@@ -391,7 +391,7 @@ ALTER USER postgres PASSWORD 'newpassword';
 
 And it worked beautifully when I tried the pg_dumpall command again. Now the backup_file.sql is successfully created. [21]
 
-![Screenshot 2024-08-26 at 11.41.43.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/3eeea792-6a15-4818-99ea-5b65509b1256/b4863123-375c-43c9-89c1-b12be4a83c80/Screenshot_2024-08-26_at_11.41.43.png)
+![Screenshot 2024-08-26 at 11.41.43.png](https://github.com/thanh-tran0106/PostgreSQL_learningdiary/blob/main/postgres_photos/21.png?raw=true)
 
 **Restoring from a Backup**
 
